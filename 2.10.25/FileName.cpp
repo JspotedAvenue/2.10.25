@@ -12,8 +12,9 @@ public:
 	Elevator(int ground, int top);
 	void onOff();
 	void SetPosition(int pos);
-	int GetPosition();
+	int GetPosition()const;
 	void Call();
+	void Print()const;
 };
 
 
@@ -36,15 +37,16 @@ void Elevator::SetPosition(int position)
 	this->position = position;
 }
 
-int Elevator::GetPosition()
+int Elevator::GetPosition()const
 {
+	/*this->position = 1000;*/
 	return position;
 }
 
 void Elevator::Call()
 {
 	if (!OnOff) {
-		cout << "Error" << endl;
+		cout << "Error Elevator is turned off" << endl;
 	}
 	cout << "Enter Floor from " << groundFloor << "up to" << topFloor << endl;
 	cin >> position;
@@ -56,7 +58,17 @@ void Elevator::Call()
 	{
 		cout << "Error! Enter correct floor" << endl;
 	}
-} 
+}
+void Elevator::Print() const
+{
+	cout << "OnOff: " << OnOff <<  endl;
+	cout << "position: " << position << endl;
+	cout << "Work: " << works << endl;
+	cout << "Top Floor: " << topFloor << endl;
+	cout << "Ground Floor: " << groundFloor << endl;
+}
+
+
 
 
 int main()
@@ -65,4 +77,6 @@ int main()
 	Elevator el(1, 10);
 	el.onOff();
 	el.Call();
+
+	el.Print();
 }
