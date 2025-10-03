@@ -43,9 +43,19 @@ int Elevator::GetPosition()
 
 void Elevator::Call()
 {
-	cout << "Введите этаж от: " << groundFloor << "до " << topFloor << endl;
+	if (!OnOff) {
+		cout << "Error" << endl;
+	}
+	cout << "Enter Floor from " << groundFloor << "up to" << topFloor << endl;
 	cin >> position;
-	cout << "Текущая позиция = " << position << endl;
+	if (position >= groundFloor && position <= topFloor)
+	{
+		cout << "Elevator is coming" << position << "floor " << endl;
+	}
+	else
+	{
+		cout << "Error! Enter correct floor" << endl;
+	}
 } 
 
 
